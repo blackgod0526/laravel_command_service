@@ -1,0 +1,45 @@
+<?php
+
+namespace DummyNamespace;
+
+use {{ namespacedRepository }};
+
+class DummyClass
+{
+    private ${{ privateRepository }};
+
+    public function __construct({{ repository }} ${{ privateRepository }})
+    {
+        $this->{{ privateRepository }} = ${{ privateRepository }};
+    }
+
+    public function returnIndex()
+    {
+		//
+    }
+
+    public function returnCreate()
+    {
+        //
+    }
+
+    public function returnStore($request)
+    {
+        //
+    }
+
+    public function returnShow($id)
+    {
+        //
+    }
+
+    public function returnEdit($id)
+    {
+        //
+    }
+
+    public function returnUpdate($request,$id)
+    {
+        //
+    }
+}

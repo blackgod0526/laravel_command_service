@@ -1,0 +1,47 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ service }};
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    private ${{ privateService }};
+
+    public function __construct({{ constructService }} ${{ privateService }})
+    {
+        $this->{{ privateService }} = ${{ privateService }};
+    }
+
+    public function index()
+    {
+        return $this->{{ privateService }}->returnIndex();
+    }
+
+    public function create()
+    {
+        return $this->{{ privateService }}->returnCreate();
+    }
+
+    public function store(Request $request)
+    {
+        return $this->{{ privateService }}->returnStore($request);
+    }
+
+    public function show($id)
+    {
+        return $this->{{ privateService }}->returnShow($id);
+    }
+
+    public function edit($id)
+    {
+        return $this->{{ privateService }}->returnEdit($id);
+    }
+
+    public function update(Request $request,$id)
+    {
+        return $this->{{ privateService }}->returnUpdate($request,$id);
+    }
+}
