@@ -104,13 +104,6 @@ class MakeService extends GeneratorCommand
 	{
 		$repositoryClass = $this->argument('name');
 
-		if (! class_exists($repositoryClass)) {
-			// 呼叫指令 make:repository ServerName
-			$this->call('make:repository', ['name' => $repositoryClass]);
-			// 呼叫指令 make:custController ServerName
-			$this->call('make:custController', ['name' => $repositoryClass]);
-		}
-
 		return [
 			'{{ namespacedRepository }}' => 'App\Repository\\'.$repositoryClass.'Repository',
 			'{{ repository }}' => class_basename($repositoryClass).'Repository',
