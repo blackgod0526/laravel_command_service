@@ -12,7 +12,7 @@ class MakeController extends GeneratorCommand
 	 *
 	 * @var string
 	 */
-	protected $signature = 'make:custController {name}';
+	protected $signature = 'make:customController {name}';
 
 	/**
 	 * 命令說明 ( 隨自己喜歡 )
@@ -36,7 +36,7 @@ class MakeController extends GeneratorCommand
 	protected function getStub()
 	{
 		// 對應上方新增檔案的名稱
-		$stub = '/stubs/cust.controller.stub';
+		$stub = '/stubs/custom.controller.stub';
 		return $this->resolveStubPath($stub);
 	}
 
@@ -107,8 +107,8 @@ class MakeController extends GeneratorCommand
 		if (! class_exists($repositoryClass)) {
 			// 呼叫指令 make:repository ServerName
 			$this->call('make:repository', ['name' => $repositoryClass]);
-			// 呼叫指令 make:custController ServerName
-			$this->call('make:custController', ['name' => $repositoryClass]);
+			// 呼叫指令 make:customController ServerName
+			$this->call('make:customController', ['name' => $repositoryClass]);
 		}
 
 			return [
