@@ -50,7 +50,7 @@ class MakeService extends GeneratorCommand
 	{
 		return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
 			? $customPath
-			: __DIR__.$stub;
+			: __DIR__ . $stub;
 	}
 
 	/**
@@ -61,7 +61,7 @@ class MakeService extends GeneratorCommand
 	 */
 	protected function getDefaultNamespace($rootNamespace)
 	{
-		return $rootNamespace.'\Service';
+		return $rootNamespace . '\Service';
 	}
 
 	/**
@@ -71,7 +71,7 @@ class MakeService extends GeneratorCommand
 	 */
 	protected function getNameInput()
 	{
-		return trim($this->argument('name')).'Service';
+		return trim($this->argument('name')) . 'Service';
 	}
 
 	/**
@@ -91,7 +91,9 @@ class MakeService extends GeneratorCommand
 		}
 
 		return str_replace(
-			array_keys($replace), array_values($replace), parent::buildClass($repository)
+			array_keys($replace),
+			array_values($replace),
+			parent::buildClass($repository)
 		);
 	}
 
@@ -104,12 +106,17 @@ class MakeService extends GeneratorCommand
 	{
 		$repositoryClass = $this->argument('name');
 
+		if (!class_exists($repositoryClass)) {
+			// 呼叫指令 make:repository ServerName
+			$this->call('make:repository', ['name' => $repositoryClass]);
+			// 呼叫指令 make:customController ServerName
+			$this->call('make:customController', ['name' => $repositoryClass]);
+		}
+
 		return [
-			'{{ namespacedRepository }}' => 'App\Repository\\'.$repositoryClass.'Repository',
-			'{{ repository }}' => class_basename($repositoryClass).'Repository',
-			'{{ privateRepository }}' => lcfirst(class_basename($repositoryClass)).'Repository',
+			'{{ namespacedRepository }}' => 'App\Repository\\' . $repositoryClass . 'Repository',
+			'{{ repository }}' => class_basename($repositoryClass) . 'Repository',
+			'{{ privateRepository }}' => lcfirst(class_basename($repositoryClass)) . 'Repository',
 		];
 	}
-
-
 }

@@ -50,7 +50,7 @@ class MakeRepository extends GeneratorCommand
 	{
 		return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
 			? $customPath
-			: __DIR__.$stub;
+			: __DIR__ . $stub;
 	}
 
 	/**
@@ -61,7 +61,7 @@ class MakeRepository extends GeneratorCommand
 	 */
 	protected function getDefaultNamespace($rootNamespace)
 	{
-		return $rootNamespace.'\Repository';
+		return $rootNamespace . '\Repository';
 	}
 
 	/**
@@ -71,7 +71,6 @@ class MakeRepository extends GeneratorCommand
 	 */
 	protected function getNameInput()
 	{
-			return trim($this->argument('name')).'Repository';
+		return trim($this->argument('name')) . 'Repository';
 	}
-
 }
