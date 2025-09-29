@@ -45,7 +45,7 @@ class {{ class }} extends Controller
         return $this->{{ privateService }}->returnUpdate($request,$id);
     }
 
-    public function destroy($$id)
+    public function destroy($id)
     {
         return $this->{{ privateService }}->returnDestroy($id);
     }
